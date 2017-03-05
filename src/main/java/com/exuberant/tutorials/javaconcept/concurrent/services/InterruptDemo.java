@@ -1,4 +1,4 @@
-package com.exuberant.tutorials.javaconcept.concurrentServices;
+package com.exuberant.tutorials.javaconcept.concurrent.services;
 
 public class InterruptDemo implements Runnable {
 

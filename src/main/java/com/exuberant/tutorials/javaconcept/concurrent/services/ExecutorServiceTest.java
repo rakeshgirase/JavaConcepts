@@ -1,4 +1,4 @@
-package com.exuberant.tutorials.javaconcept.concurrentServices;
+package com.exuberant.tutorials.javaconcept.concurrent.services;
 
 import java.util.ArrayList;
 import java.util.List;

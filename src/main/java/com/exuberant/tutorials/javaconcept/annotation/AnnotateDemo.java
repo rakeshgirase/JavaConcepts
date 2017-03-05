@@ -1,6 +1,5 @@
 package com.exuberant.tutorials.javaconcept.annotation;
 
-
 @MyAnnotation(lastName = "Girase", name = "Rakesh")
 public class AnnotateDemo {
 

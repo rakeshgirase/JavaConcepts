@@ -1,4 +1,4 @@
-package com.exuberant.tutorials.javaconcept.concurrentServices;
+package com.exuberant.tutorials.javaconcept.concurrent.services;
 
 /**
  * MyRunnable will count the sum of the number from 1 to the parameter
