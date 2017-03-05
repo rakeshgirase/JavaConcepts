@@ -7,7 +7,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class ProducerConsumerDemo {
 
-    private static BlockingQueue<Integer> queue = new ArrayBlockingQueue<Integer>(10);
+    private static BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
 
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(new Runnable() {

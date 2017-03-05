@@ -8,7 +8,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 public class PriorityBlockingQueueTester {
     public static void main(String[] args) {
-        BlockingQueue<Employee> pq = new PriorityBlockingQueue<Employee>();
+        BlockingQueue<Employee> pq = new PriorityBlockingQueue<>();
         pq.add(new Employee(1, "Rakesh", "UNR"));
         pq.add(new Employee(2, "Mahesh", "MUM"));
         pq.add(new Employee(3, "Rajesh", "KAN"));

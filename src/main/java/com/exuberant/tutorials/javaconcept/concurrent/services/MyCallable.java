@@ -14,7 +14,7 @@ import java.util.concurrent.Callable;
 public class MyCallable implements Callable<Integer> {
     private final int countUntil;
 
-    MyCallable(int countUntil) {
+    public MyCallable(int countUntil) {
         this.countUntil = countUntil;
     }
 

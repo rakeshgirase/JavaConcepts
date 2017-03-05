@@ -9,7 +9,7 @@ public class StringCounterDemo {
     public static void main(String[] args) {
         String sentense = "My Rakesh Rakesh Rakesh Again Hello Again Hello Hello Hello Rakesh Rakesh Hello Rakesh Again Again Again Again";
         StringTokenizer st = new StringTokenizer(sentense, " ");
-        Set<StringCounter> container = new HashSet<StringCounter>();
+        Set<StringCounter> container = new HashSet<>();
         while (st.hasMoreElements()) {
             String str = st.nextElement().toString();
             StringCounter sc = new StringCounter(str);
@@ -22,7 +22,7 @@ public class StringCounterDemo {
                 container.add(sc);
             }
         }
-        Set<StringCounter> sortedContainer = new TreeSet<StringCounter>();
+        Set<StringCounter> sortedContainer = new TreeSet<>();
         sortedContainer.addAll(container);
         for (StringCounter sc : sortedContainer) {
             System.err.println(sc);

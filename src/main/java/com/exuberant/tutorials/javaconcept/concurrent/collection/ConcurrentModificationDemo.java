@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ConcurrentModificationDemo {
     public static void main(String[] args) {
-        List<String> myList = new ArrayList<String>();
+        List<String> myList = new ArrayList<>();
         myList.add("1");
         myList.add("2");
         myList.add("3");
@@ -14,10 +14,10 @@ public class ConcurrentModificationDemo {
         while (it.hasNext()) {
             String value = it.next();
             System.out.println("List Value:" + value);
-            //if (value.equals("3"))
-            //myList.remove(value);
+            /*if (value.equals("3"))
+            myList.remove(value);*/
         }
-        Map<String, String> myMap = new HashMap<String, String>();
+        Map<String, String> myMap = new HashMap<>();
         myMap.put("1", "1");
         myMap.put("2", "2");
         myMap.put("3", "3");
@@ -27,7 +27,7 @@ public class ConcurrentModificationDemo {
             System.out.println("Map Value:" + myMap.get(key));
             if (key.equals("2")) {
                 myMap.put("1", "4");
-                // myMap.put("4", "4");
+                //myMap.put("4", "4");
             }
         }
     }

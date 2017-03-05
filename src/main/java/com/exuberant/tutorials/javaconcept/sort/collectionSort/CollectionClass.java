@@ -9,7 +9,7 @@ public class CollectionClass {
      * @param args
      */
     public static void main(String[] args) {
-        Map<Object, Object> h = new HashMap<Object, Object>();
+        Map<Object, Object> h = new HashMap<>();
         h.put(null, null);
         System.out.println("HashMap");
         hashMap();
@@ -28,7 +28,7 @@ public class CollectionClass {
     }
 
     public static void hashMap() {
-        HashMap<Integer, Cricketer> hashMap = new HashMap<Integer, Cricketer>();
+        HashMap<Integer, Cricketer> hashMap = new HashMap<>();
         Cricketer c1 = new Cricketer("Rakesh", 55, "India");
         Cricketer c2 = new Cricketer("G", 41, "SA");
         Cricketer c3 = new Cricketer("A", 65, "AUS");
@@ -44,7 +44,7 @@ public class CollectionClass {
     }
 
     public static void hashTable() {
-        Hashtable<Integer, Cricketer> hashTable = new Hashtable<Integer, Cricketer>();
+        Hashtable<Integer, Cricketer> hashTable = new Hashtable<>();
         Cricketer c1 = new Cricketer("Rakesh", 55, "India");
         Cricketer c2 = new Cricketer("G", 41, "SA");
         Cricketer c3 = new Cricketer("A", 65, "AUS");
@@ -60,7 +60,7 @@ public class CollectionClass {
     }
 
     public static void treeMap() {
-        TreeSet<Cricketer> tree = new TreeSet<Cricketer>();
+        TreeSet<Cricketer> tree = new TreeSet<>();
         Cricketer c1 = new Cricketer("Rakesh", 55, "India");
         Cricketer c2 = new Cricketer("G", 41, "SA");
         Cricketer c3 = new Cricketer("A", 65, "AUS");

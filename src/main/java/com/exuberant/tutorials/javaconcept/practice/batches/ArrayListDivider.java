@@ -7,7 +7,7 @@ public class ArrayListDivider {
     public static void main(String[] args) {
         int batchSize = 5;
         int fromIndex = 0, toIndex = 0;
-        List<Integer> numbers = new ArrayList<Integer>();
+        List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 17; i++) {
             numbers.add(i);// Populate the ArrayList
         }

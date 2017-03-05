@@ -12,11 +12,11 @@ public class Worker {
     private Object lock1 = new Object();
     private Object lock2 = new Object();
 
-    private List<Integer> lockedList1 = new ArrayList<Integer>();
-    private List<Integer> lockedList2 = new ArrayList<Integer>();
+    private List<Integer> lockedList1 = new ArrayList<>();
+    private List<Integer> lockedList2 = new ArrayList<>();
 
-    private List<Integer> list1 = new ArrayList<Integer>();
-    private List<Integer> list2 = new ArrayList<Integer>();
+    private List<Integer> list1 = new ArrayList<>();
+    private List<Integer> list2 = new ArrayList<>();
 
     public void stageOne() {
         list1.add(random.nextInt(100));

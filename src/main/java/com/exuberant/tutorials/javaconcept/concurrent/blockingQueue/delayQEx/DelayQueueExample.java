@@ -6,7 +6,7 @@ import java.util.concurrent.DelayQueue;
 public class DelayQueueExample {
 
     public static void main(String[] args) {
-        DelayQueue<DelayedElement> queue = new DelayQueue<DelayedElement>();
+        DelayQueue<DelayedElement> queue = new DelayQueue<>();
 
         DelayedElement element1 = new DelayedElement(10, "Hi");
 

@@ -10,7 +10,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class MyBlockingQueue<E> implements BlockingQueue<E> {
-    private List<E> q = new ArrayList<E>();
+    private List<E> q = new ArrayList<>();
     private Lock lock = new ReentrantLock();
     private int upperLimit = Integer.MAX_VALUE;
 

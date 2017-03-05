@@ -7,7 +7,7 @@ public class StackTest {
     public static void main(String[] args) {
         int min = 101;
         Random r = new Random();
-        ArrayList<Integer> minColl = new ArrayList<Integer>();
+        ArrayList<Integer> minColl = new ArrayList<>();
         System.out.println("=============Populating Stack===================");
         for (int i = 0; i < 10; i++) {
             int num = r.nextInt(100);

@@ -10,7 +10,7 @@ public class TimePrint {
      * @param args
      */
     public static void main(String[] args) {
-        Map<String, Boolean> status = new HashMap<String, Boolean>();
+        Map<String, Boolean> status = new HashMap<>();
         status.put("First", true);
         status.put("Second", true);
         System.out.println("Before ");

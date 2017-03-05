@@ -1,4 +1,4 @@
-package com.exuberant.tutorials.javaconcept.deadlock;
+package com.exuberant.tutorials.javaconcept.concurrent.deadlock;
 
 //Write two threads with two common objects.
 //First holds a lock on First object and sleeps for some time 

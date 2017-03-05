@@ -4,7 +4,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class MyBlockingQTest {
     public static void main(String[] args) {
-        BlockingQueue<Double> q = new MyBlockingQueue<Double>();
+        BlockingQueue<Double> q = new MyBlockingQueue<>();
         Thread p = new Thread(new Producer(q));
         Thread c = new Thread(new Consumer(q));
         p.start();

@@ -3,7 +3,7 @@ package com.exuberant.tutorials.javaconcept.stacks;
 import java.util.ArrayList;
 
 public class Stack {
-    private static ArrayList<Integer> a = new ArrayList<Integer>();
+    private static ArrayList<Integer> a = new ArrayList<>();
 
     private Stack() {
     }

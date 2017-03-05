@@ -17,7 +17,7 @@ public class JoinSortedArray {
                                                 List<Integer> second) {
         int firstSize = first.size();
         int secondSize = second.size();
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
 
         int firstIndex = 0;
         int secondIndex = 0;
@@ -48,7 +48,7 @@ public class JoinSortedArray {
                                                    List<Integer> second) {
         int firstSize = first.size();
         int secondSize = second.size();
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
         if (first.get(firstSize - 1) <= second.get(0)) {// Check if last element
             // of first is <= first
             // element of second
