@@ -12,7 +12,7 @@ class Processor extends Thread {
             System.out.println("Running");
 
             try {
-                Thread.sleep(50);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

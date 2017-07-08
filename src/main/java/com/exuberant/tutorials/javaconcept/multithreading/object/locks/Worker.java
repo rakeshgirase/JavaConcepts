@@ -3,7 +3,7 @@ package com.exuberant.tutorials.javaconcept.multithreading.object.locks;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+import java.util.concurrent.Callable;
 
 public class Worker {
 
@@ -54,21 +54,13 @@ public class Worker {
     }
 
     public void main() {
-        System.out.println("Starting ...");
+        System.out.println();
 
         long start = System.currentTimeMillis();
 
-        Thread t1 = new Thread(new Runnable() {
-            public void run() {
-                process();
-            }
-        });
+        Thread t1 = new Thread(() -> process());
 
-        Thread t2 = new Thread(new Runnable() {
-            public void run() {
-                process();
-            }
-        });
+        Thread t2 = new Thread(() -> process());
 
         t1.start();
         t2.start();

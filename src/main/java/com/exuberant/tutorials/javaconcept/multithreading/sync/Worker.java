@@ -13,24 +13,10 @@ public class Worker {
     }
 
     public void run() {
-        Thread thread1 = new Thread(new Runnable() {
-            public void run() {
-                for (int i = 0; i < 10000; i++) {
-                    syncIncrement();
-                    increment();
-                }
-            }
-        });
+        Thread thread1 = new Thread(() -> incrementAll());
         thread1.start();
 
-        Thread thread2 = new Thread(new Runnable() {
-            public void run() {
-                for (int i = 0; i < 10000; i++) {
-                    syncIncrement();
-                    increment();
-                }
-            }
-        });
+        Thread thread2 = new Thread(() -> incrementAll());
         thread2.start();
 
         try {
@@ -43,5 +29,12 @@ public class Worker {
 
         System.out.println("Sync Count is: " + syncCount);
         System.out.println("Non Sync Count is: " + nonSyncCount);
+    }
+
+    private void incrementAll() {
+        for (int i = 0; i < 10000; i++) {
+            syncIncrement();
+            increment();
+        }
     }
 }
