@@ -1,7 +1,12 @@
 package com.exuberant.tutorials.javaconcept.annotation;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @MyAnnotation(lastName = "Girase", name = "Rakesh")
 public class AnnotateDemo {
+
+    private static Logger logger = LoggerFactory.getLogger(AnnotateDemo.class);
 
     @MyAnnotation(lastName = "integer", name = "long")
     private int number;
@@ -10,28 +15,28 @@ public class AnnotateDemo {
             NoSuchMethodException, NoSuchFieldException {
         AnnotateDemo a = new AnnotateDemo();
         MyAnnotation clazz = a.getClass().getAnnotation(MyAnnotation.class);
-        System.out.println("================Object================");
-        System.out.println("Class " + clazz.name() + " " + clazz.lastName());
-        System.out.println("================Method================");
+        logger.info("================Object================");
+        logger.info("Class: {} {}", clazz.name(), clazz.lastName());
+        logger.info("================Method================");
         MyAnnotation meth = a.getClass().getMethod("brother").getAnnotation(MyAnnotation.class);
-        System.out.println("Brother " + meth.name() + " " + meth.lastName());
+        logger.info("Brother {} {}", meth.name(), meth.lastName());
 
-        System.out.println("================Instance Variable================");
+        logger.info("================Instance Variable================");
         MyAnnotation instance = a.getClass().getDeclaredField("number").getAnnotation(MyAnnotation.class);
-        System.out.println("Instance Variable " + instance.name() + " " + instance.lastName());
+        logger.info("Instance Variable {} {}", instance.name(), instance.lastName());
 
-        System.out.println("================Local Variable================");
+        logger.info("================Local Variable================");
         a.getClass().getMethod("brother").getDeclaredAnnotations();
 
 		/*MyAnnotation local = a.getClass().getMethod("brother");
-        System.out.println("Instance Variable " + local.name() + " " + local.lastName());*/
+        logger.info("Instance Variable " + local.name() + " " + local.lastName());*/
     }
 
     @MyAnnotation(lastName = "Girase", name = "Roshan")
     public void brother() {
         @MyAnnotation(lastName = "Local", name = "Roshan")
         int test = 1;
-        System.out.println("Inside Print" + test);
+        logger.info("Inside Print: {}", test);
     }
 
     public int getNumber() {

@@ -1,11 +1,16 @@
 package com.exuberant.tutorials.javaconcept.multithreading.consumer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 
 public class ProducerConsumerDemo {
+
+    private static Logger logger = LoggerFactory.getLogger(ProducerConsumerDemo.class);
 
     private static BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
 
@@ -15,7 +20,6 @@ public class ProducerConsumerDemo {
                 try {
                     producer();
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -26,7 +30,6 @@ public class ProducerConsumerDemo {
                 try {
                     consumer();
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -39,16 +42,15 @@ public class ProducerConsumerDemo {
         t2.join();
     }
 
-    private static void producer() throws InterruptedException {
-        Random random = new Random();
+    static Random random = new Random();
 
+    private static void producer() throws InterruptedException {
         while (true) {
             queue.put(random.nextInt(100));
         }
     }
 
     private static void consumer() throws InterruptedException {
-        Random random = new Random();
 
         while (true) {
             Thread.sleep(100);
@@ -56,7 +58,7 @@ public class ProducerConsumerDemo {
             if (random.nextInt(10) == 0) {
                 Integer value = queue.take();
 
-                System.out.println("Taken value: " + value + "; Queue size is: " + queue.size());
+                logger.info("Taken value: {}; Queue size is: [{}]", value , queue.size());
             }
         }
     }

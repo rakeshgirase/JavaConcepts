@@ -1,11 +1,16 @@
 package com.exuberant.tutorials.javaconcept.multithreading.locks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Runner {
+
+    private static Logger logger = LoggerFactory.getLogger(Runner.class);
 
     private int count = 0;
     private Lock lock = new ReentrantLock();
@@ -19,17 +24,17 @@ public class Runner {
 
     public void firstThread() throws InterruptedException {
         lock.lock();
-        System.err.println("Locked First...");
+        logger.info("Locked First...");
 
-        System.out.println("Waiting ....");
+        logger.info("Waiting ....");
         cond.await();
 
-        System.out.println("Woken up!");
+        logger.info("Woken up!");
 
         try {
             increment();
         } finally {
-            System.err.println("Unlocked First");
+            logger.info("Unlocked First");
             lock.unlock();
         }
     }
@@ -38,10 +43,10 @@ public class Runner {
 
         Thread.sleep(1000);
         lock.lock();
-        System.err.println("Locked Second...");
-        System.out.println("Press the return key!");
+        logger.info("Locked Second...");
+        logger.info("Press the return key!");
         new Scanner(System.in).nextLine();
-        System.out.println("Got return key!");
+        logger.info("Got return key!");
 
         cond.signal();
 
@@ -49,11 +54,11 @@ public class Runner {
             increment();
         } finally {
             lock.unlock();
-            System.err.println("Unlocked Second");
+            logger.info("Unlocked Second");
         }
     }
 
     public void finished() {
-        System.out.println("Count is: " + count);
+        logger.info("Count is: " + count);
     }
 }

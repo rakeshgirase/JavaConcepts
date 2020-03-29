@@ -1,6 +1,12 @@
 package com.exuberant.tutorials.javaconcept.multithreading.sync;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Worker {
+
+    private static Logger logger = LoggerFactory.getLogger(Worker.class);
+
     private int syncCount = 0;
     private int nonSyncCount = 0;
 
@@ -27,8 +33,8 @@ public class Worker {
             e.printStackTrace();
         }
 
-        System.out.println("Sync Count is: " + syncCount);
-        System.out.println("Non Sync Count is: " + nonSyncCount);
+        logger.info("Sync Count is: " + syncCount);
+        logger.info("Non Sync Count is: " + nonSyncCount);
     }
 
     private void incrementAll() {

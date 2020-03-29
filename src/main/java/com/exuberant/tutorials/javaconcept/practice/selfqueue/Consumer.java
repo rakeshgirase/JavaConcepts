@@ -1,8 +1,14 @@
 package com.exuberant.tutorials.javaconcept.practice.selfqueue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.BlockingQueue;
 
 public class Consumer implements Runnable {
+
+    private static Logger logger = LoggerFactory.getLogger(Consumer.class);
+
     BlockingQueue<Double> q = null;
 
     public Consumer(BlockingQueue<Double> q) {
@@ -17,7 +23,7 @@ public class Consumer implements Runnable {
                     if (q.size() == 0) {
                         wait();
                     } else {
-                        System.out.println(q.take());
+                        logger.info(String.valueOf(q.take()));
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

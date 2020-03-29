@@ -1,9 +1,14 @@
 package com.exuberant.tutorials.javaconcept.thread;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ThreadTester {
+
+    private static Logger logger = LoggerFactory.getLogger(ThreadTester.class);
 
     //public static int count;
 
@@ -21,7 +26,7 @@ public class ThreadTester {
         service.execute(new MyThread("B"));
         service.shutdown();
         while (service.isTerminated() == true) {
-            System.out.println("I am done");
+            logger.info("I am done");
         }
     }
 

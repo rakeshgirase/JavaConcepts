@@ -1,9 +1,14 @@
-package com.exuberant.tutorials.javaconcept.sort.collectionSort;
+package com.exuberant.tutorials.javaconcept.sort.collectionsort;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
 
 public class CollectionClass {
+
+    private static Logger logger = LoggerFactory.getLogger(CollectionClass.class);
 
     /**
      * @param args
@@ -11,24 +16,24 @@ public class CollectionClass {
     public static void main(String[] args) {
         Map<Object, Object> h = new HashMap<>();
         h.put(null, null);
-        System.out.println("HashMap");
+        logger.info("HashMap");
         hashMap();
-        System.out.println("HashTable");
+        logger.info("HashTable");
         hashTable();
         String test = new String("ABC");
-        System.out.println(test.concat("def"));
-        System.out.println(test);
+        logger.info(test.concat("def"));
+        logger.info(test);
         StringBuffer testBuffer = new StringBuffer("ABC");
-        System.out.println(testBuffer.append("def"));
-        System.out.println(testBuffer);
+        logger.info(String.valueOf(testBuffer.append("def")));
+        logger.info(String.valueOf(testBuffer));
         StringBuffer str = new StringBuffer("Rakesh");
-        System.out.println("String is " + str);
+        logger.info("String is " + str);
         modifyStringBuffer(str);
-        System.out.println("Modified String is " + str);
+        logger.info("Modified String is " + str);
     }
 
     public static void hashMap() {
-        HashMap<Integer, Cricketer> hashMap = new HashMap<>();
+        Map<Integer, Cricketer> hashMap = new HashMap<>();
         Cricketer c1 = new Cricketer("Rakesh", 55, "India");
         Cricketer c2 = new Cricketer("G", 41, "SA");
         Cricketer c3 = new Cricketer("A", 65, "AUS");
@@ -39,12 +44,12 @@ public class CollectionClass {
         Set<Integer> s = hashMap.keySet();
         Iterator<Integer> iter = s.iterator();
         while (iter.hasNext()) {
-            System.err.println(iter.next());
+            logger.info(String.valueOf(iter.next()));
         }
     }
 
     public static void hashTable() {
-        Hashtable<Integer, Cricketer> hashTable = new Hashtable<>();
+        Map<Integer, Cricketer> hashTable = new Hashtable<>();
         Cricketer c1 = new Cricketer("Rakesh", 55, "India");
         Cricketer c2 = new Cricketer("G", 41, "SA");
         Cricketer c3 = new Cricketer("A", 65, "AUS");
@@ -55,7 +60,7 @@ public class CollectionClass {
         Set<Integer> s = hashTable.keySet();
         Iterator<Integer> iter = s.iterator();
         while (iter.hasNext()) {
-            System.err.println(hashTable.get(iter.next()));
+            logger.info(String.valueOf(hashTable.get(iter.next())));
         }
     }
 
@@ -69,18 +74,18 @@ public class CollectionClass {
         tree.add(c3);
         Iterator<Cricketer> iter = tree.iterator();
         while (iter.hasNext()) {
-            System.err.println(iter.next());
+            logger.info(String.valueOf(iter.next()));
         }
 
     }
 
     public static void modifyString(String str) {
-        System.err.println("String is " + str);
+        logger.info("String is " + str);
         str = "Modified";
     }
 
     public static void modifyStringBuffer(StringBuffer str) {
-        System.err.println("StringBuffer is " + str);
+        logger.info("StringBuffer is " + str);
         str = new StringBuffer("Modified");
     }
 

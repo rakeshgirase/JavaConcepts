@@ -1,21 +1,29 @@
 package com.exuberant.tutorials.javaconcept.fundamentals;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 enum Color {
-    Rakesh, Roshan;
+
+    BLACK, WHITE;
+
+    private static Logger logger = LoggerFactory.getLogger(Color.class);
 
     Color() {
-        System.out.println("HI");
     }
 
     public void print() {
-        System.out.println("HI");
+        logger.info("HI");
     }
 }
 
 public class MyTest {
+
+    private static Logger logger = LoggerFactory.getLogger(MyTest.class);
+
     public static void main(String[] args) {
-        //System.out.println(Color.Rakesh.ordinal());
-        System.out.println(hash(2000));
+        //logger.info(Color.Rakesh.ordinal());
+        logger.info(String.valueOf(hash(2000)));
 
     }
 

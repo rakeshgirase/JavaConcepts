@@ -1,4 +1,7 @@
-package com.exuberant.tutorials.javaconcept.concurrent.countdownLatch;
+package com.exuberant.tutorials.javaconcept.concurrent.countdownlatch;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,6 +10,9 @@ import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 public class TestCountDownLatch {
+
+    private static Logger logger = LoggerFactory.getLogger(TestCountDownLatch.class);
+
     public static void main(String[] args) throws Exception {
         List<String> horseList = Collections
                 .synchronizedList(new ArrayList<String>());
@@ -22,14 +28,17 @@ public class TestCountDownLatch {
         startLatch.countDown();
         // wait till a endLatch count is 0 (endLatch.countDown() called 5 times)
         endLatch.await();
-        System.out.println("First position Horse is Horse No "
+        logger.info("First position Horse is Horse No "
                 + horseList.get(0));
-        System.out.println("Second position Horse is Horse No "
+        logger.info("Second position Horse is Horse No "
                 + horseList.get(1));
     }
 }
 
 class HorseThread extends Thread {
+
+    private static Logger logger = LoggerFactory.getLogger(HorseThread.class);
+
     List<String> list;
     private String horseId;
     private CountDownLatch startLatch, endLatch;
@@ -42,6 +51,7 @@ class HorseThread extends Thread {
         this.list = list;
     }
 
+    @Override
     public void run() {
         try {
             // wait till start latch opened
@@ -50,7 +60,7 @@ class HorseThread extends Thread {
             // notify race end crossed,endLatch decrease count;
             endLatch.countDown();
             list.add(horseId);
-            // System.out.println("Horse "+horseId +" has completed.");
+            logger.info("Horse: [{}]  has completed.", horseId);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

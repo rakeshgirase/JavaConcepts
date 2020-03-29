@@ -1,9 +1,15 @@
 package com.exuberant.tutorials.javaconcept.practice.selfqueue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.BlockingQueue;
 
 public class Producer implements Runnable {
-    BlockingQueue<Double> q = null;
+
+    private static Logger logger = LoggerFactory.getLogger(Producer.class);
+
+    BlockingQueue<Double> q;
 
     public Producer(BlockingQueue<Double> q) {
         this.q = q;
@@ -16,7 +22,7 @@ public class Producer implements Runnable {
                 try {
                     Double d = Math.random();
                     q.put(d);
-                    System.out.println("Added " + d);
+                    logger.info("Added [{}]", d);
                     if (q.size() == 1) {
                         notify();
                     }

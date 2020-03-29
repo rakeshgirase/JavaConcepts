@@ -1,11 +1,17 @@
-package com.exuberant.tutorials.javaconcept.concurrent.blockingQueue.delayQEx;
+package com.exuberant.tutorials.javaconcept.concurrent.blockingqueue.delay;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
 public class DelayedElement implements Delayed, Comparable<Delayed> {
+
+    private static Logger logger = LoggerFactory.getLogger(DelayedElement.class);
+
     private long delayTime;
-    private long insertionTime = System.currentTimeMillis();
+    private long insertionTime;
     private String name;
 
 
@@ -47,28 +53,24 @@ public class DelayedElement implements Delayed, Comparable<Delayed> {
     }
 
     @Override
-    public int compareTo(Delayed elem) {
-        int result = 1;
-        if (elem instanceof DelayedElement) {
-            DelayedElement to = (DelayedElement) elem;
+    public int compareTo(Delayed delayed) {
+        int result = 0;
+        if (delayed instanceof DelayedElement) {
+            DelayedElement to = (DelayedElement) delayed;
             if (this.getDelayTime() < to.getDelayTime()) {
                 result = -1;
             } else if (this.getDelayTime() > to.getDelayTime()) {
                 result = 1;
-            } else if (this.getDelayTime() < to.getDelayTime()) {
-                result = 0;
             }
         }
-        System.out.println("CompareTo Result " + result);
+        logger.info("CompareTo Result: [{}]", result);
         return result;
     }
 
     @Override
     public long getDelay(TimeUnit unit) {
         long result = unit.convert(delayTime - (System.currentTimeMillis() - insertionTime), TimeUnit.SECONDS);
-        System.out.println("getDelay is " + result);
+        logger.info("getDelay is: [{}]", result);
         return result;
     }
-
-
 }

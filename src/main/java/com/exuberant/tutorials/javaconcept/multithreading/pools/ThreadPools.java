@@ -1,10 +1,15 @@
 package com.exuberant.tutorials.javaconcept.multithreading.pools;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 class Processor implements Runnable {
+
+    private static Logger logger = LoggerFactory.getLogger(Processor.class);
 
     private int id;
 
@@ -13,18 +18,20 @@ class Processor implements Runnable {
     }
 
     public void run() {
-        System.out.println("Starting: " + id);
+        logger.info("Starting: [{}]", id);
 
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
+            logger.error("Got Exception:", e);
         }
-
-        System.out.println("Completed: " + id);
+        logger.info("Completed: [{}]", id);
     }
 }
 
 public class ThreadPools {
+
+    private static Logger logger = LoggerFactory.getLogger(ThreadPools.class);
 
     public static void main(String[] args) {
 
@@ -36,13 +43,13 @@ public class ThreadPools {
 
         executor.shutdown();
 
-        System.out.println("All tasks submitted.");
+        logger.info("All tasks submitted.");
 
         try {
             executor.awaitTermination(1, TimeUnit.DAYS);
         } catch (InterruptedException e) {
         }
 
-        System.out.println("All tasks completed.");
+        logger.info("All tasks completed.");
     }
 }

@@ -1,6 +1,12 @@
-package com.exuberant.tutorials.javaconcept.sort.collectionSort;
+package com.exuberant.tutorials.javaconcept.sort.collectionsort;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Cricketer implements Comparable<Cricketer> {
+
+    private static Logger logger = LoggerFactory.getLogger(Cricketer.class);
+
     String name = "";
     int avg;
     String teamName = "";
@@ -20,7 +26,7 @@ public class Cricketer implements Comparable<Cricketer> {
                 min = a[i];
             }
         }
-        System.out.println("min is " + min);
+        logger.info("min is [{}]", min);
     }
 
     @Override
@@ -39,6 +45,6 @@ public class Cricketer implements Comparable<Cricketer> {
 
     @Override
     public void finalize() {
-        System.out.println("Finalize has run for " + this);
+        logger.info("Finalize has run for: [{}]", this);
     }
 }

@@ -1,10 +1,15 @@
 package com.exuberant.tutorials.javaconcept.fundamentals;
 
 import com.exuberant.tutorials.javaconcept.customObjects.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
 public class CloneDemo {
+
+    private static Logger logger = LoggerFactory.getLogger(CloneDemo.class);
+
     public static void main(String[] args) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream os = new ObjectOutputStream(baos);
@@ -19,7 +24,7 @@ public class CloneDemo {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(emp);
-        System.out.println(emp2);
+        logger.info(emp.toString());
+        logger.info(emp2.toString());
     }
 }

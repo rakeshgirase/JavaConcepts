@@ -1,10 +1,15 @@
-package com.exuberant.tutorials.javaconcept.sort.collectionSort;
+package com.exuberant.tutorials.javaconcept.sort.collectionsort;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class TimePrint {
+
+    private static Logger logger = LoggerFactory.getLogger(TimePrint.class);
 
     /**
      * @param args
@@ -13,10 +18,10 @@ public class TimePrint {
         Map<String, Boolean> status = new HashMap<>();
         status.put("First", true);
         status.put("Second", true);
-        System.out.println("Before ");
+        logger.info("Before ");
         print(status);
         modify(status);
-        System.out.println("After ");
+        logger.info("After ");
         print(status);
     }
 
@@ -27,8 +32,8 @@ public class TimePrint {
     }
 
     private static void print(Map<String, Boolean> status) {
-        System.err.println("First " + status.get("First"));
-        System.err.println("First " + status.get("Second"));
+        logger.info("First " + status.get("First"));
+        logger.info("First " + status.get("Second"));
 
     }
 

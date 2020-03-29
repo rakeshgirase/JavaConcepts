@@ -1,26 +1,31 @@
 package com.exuberant.tutorials.javaconcept.concurrent.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class InterruptDemo implements Runnable {
 
+    private static Logger logger = LoggerFactory.getLogger(InterruptDemo.class);
+
     public static void main(String[] args) {
-        System.out.println("Hi");
+        logger.info("Hi");
         Runnable r = new InterruptDemo();
         Thread t = new Thread(r);
         t.start();
         t.interrupt();
-        System.out.println("Main Code");
+        logger.info("Main Code");
     }
 
     @Override
     public void run() {
-        System.out.println("Thread is sleeping");
+        logger.info("Thread is sleeping");
         try {
             Thread.sleep(60 * 1000 * 10);
         } catch (InterruptedException e) {
-            System.out.println("interrupted");
+            logger.info("interrupted");
             e.printStackTrace();
         }
-        System.out.println("After Interruption");
+        logger.info("After Interruption");
 
     }
 

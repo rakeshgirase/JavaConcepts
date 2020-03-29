@@ -1,26 +1,32 @@
-package com.exuberant.tutorials.javaconcept.concurrent.cyclicBarrier;
+package com.exuberant.tutorials.javaconcept.concurrent.cyclicbarrier;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarrierDemo {
+
+    private static Logger logger = LoggerFactory.getLogger(CyclicBarrierDemo.class);
+
     public static void main(String[] args) {
         final CyclicBarrier cb = new CyclicBarrier(5);
         for (int i = 0; i < 5; i++) {
             final int idx = i;
             new Thread(new Runnable() {
                 public void run() {
-                    System.out.println("T" + idx + ": await");
+                    logger.info("T: {}: await", idx);
                     try {
                         cb.await();
                     } catch (InterruptedException ex) {
-                        System.out.println("T" + idx + ": interrupted");
+                        logger.info("T: {} : interrupted", idx);
                         return;
                     } catch (BrokenBarrierException ex) {
-                        System.out.println("T" + idx + ": broken");
+                        logger.info("T: {} : Broken", idx);
                         return;
                     }
-                    System.out.println("T" + idx + ": continue");
+                    logger.info("T: {} : continue", idx);
                 }
             }).start();
         }

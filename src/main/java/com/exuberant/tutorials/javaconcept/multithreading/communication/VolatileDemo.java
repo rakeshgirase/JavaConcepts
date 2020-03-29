@@ -1,15 +1,20 @@
 package com.exuberant.tutorials.javaconcept.multithreading.communication;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Scanner;
 
 class Processor extends Thread {
+
+    private static Logger logger = LoggerFactory.getLogger(Processor.class);
 
     private volatile boolean running = true;
 
     public void run() {
 
         while (running) {
-            System.out.println("Running");
+            logger.info("Running");
 
             try {
                 Thread.sleep(500);
@@ -27,6 +32,8 @@ class Processor extends Thread {
 
 public class VolatileDemo {
 
+    private static Logger logger = LoggerFactory.getLogger(VolatileDemo.class);
+
     public static void main(String[] args) {
         Processor pro = new Processor();
         pro.start();
@@ -34,7 +41,7 @@ public class VolatileDemo {
         // Wait for the enter key
         Scanner scanner = new Scanner(System.in);
         String nextLine = scanner.nextLine();
-        System.err.println("Stopped: " + nextLine);
+        logger.info("Stopped: " + nextLine);
 
         pro.shutdown();
         scanner.close();

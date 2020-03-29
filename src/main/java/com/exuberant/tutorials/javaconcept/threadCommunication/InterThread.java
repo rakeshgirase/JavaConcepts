@@ -1,6 +1,11 @@
 package com.exuberant.tutorials.javaconcept.threadCommunication;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 class Shared {
+
+    private static Logger logger = LoggerFactory.getLogger(Shared.class);
 
     int num = 0;
     boolean isValueSet = false;
@@ -10,12 +15,12 @@ class Shared {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.out.println("InterruptedException caught");
+                logger.info("InterruptedException caught");
             }
-        System.out.println("After Notified From Put");
-        System.out.println("consume: " + num);
+        logger.info("After Notified From Put");
+        logger.info("consume: " + num);
         isValueSet = false;
-        System.out.println("Before NOtifying Get");
+        logger.info("Before NOtifying Get");
         notify();
         return num;
     }
@@ -25,13 +30,13 @@ class Shared {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.out.println("InterruptedException caught");
+                logger.info("InterruptedException caught");
             }
-        System.out.println("After Notified From Get");
+        logger.info("After Notified From Get");
         this.num = num;
-        System.out.println("Produce: " + num);
+        logger.info("Produce: " + num);
         isValueSet = true;
-        System.out.println("Before NOtifying Put");
+        logger.info("Before NOtifying Put");
         notify();
     }
 }

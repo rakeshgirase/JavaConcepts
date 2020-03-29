@@ -1,8 +1,14 @@
-package com.exuberant.tutorials.javaconcept.concurrent.countdownLatch;
+package com.exuberant.tutorials.javaconcept.concurrent.countdownlatch;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CountDownLatch;
 
 public class LatchTest {
+
+    private static Logger logger = LoggerFactory.getLogger(LatchTest.class);
+
     private static final int COUNT = 10;
 
     public static void main(String args[]) {
@@ -14,14 +20,14 @@ public class LatchTest {
             new Thread(new Worker(startSignal, stopSignal, Integer.toString(i)))
                     .start();
         }
-        System.out.println("Go");
+        logger.info("Go");
         startSignal.countDown();
         try {
             stopSignal.await();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        System.out.println("Done");
+        logger.info("Done");
     }
 
     private static class Worker implements Runnable {
@@ -44,7 +50,7 @@ public class LatchTest {
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
-            System.out.println("Running: " + name);
+            logger.info("Running: " + name);
             stopLatch.countDown();
         }
     }

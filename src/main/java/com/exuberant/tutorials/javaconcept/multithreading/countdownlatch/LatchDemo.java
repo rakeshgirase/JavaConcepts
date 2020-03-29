@@ -1,10 +1,16 @@
 package com.exuberant.tutorials.javaconcept.multithreading.countdownlatch;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 class Processor implements Runnable {
+
+    private static Logger logger = LoggerFactory.getLogger(Processor.class);
+
     private CountDownLatch latch;
 
     public Processor(CountDownLatch latch) {
@@ -12,7 +18,7 @@ class Processor implements Runnable {
     }
 
     public void run() {
-        System.out.println("Started...");
+        logger.info("Started...");
 
         try {
             Thread.sleep(3000);
@@ -26,6 +32,8 @@ class Processor implements Runnable {
 }
 
 public class LatchDemo {
+
+    private static Logger logger = LoggerFactory.getLogger(LatchDemo.class);
 
     public static void main(String[] args) {
 
@@ -44,7 +52,7 @@ public class LatchDemo {
             e.printStackTrace();
         }
 
-        System.out.println("Completed.");
+        logger.info("Completed.");
     }
 
 }

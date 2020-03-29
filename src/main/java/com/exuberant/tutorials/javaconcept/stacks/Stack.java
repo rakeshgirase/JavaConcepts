@@ -1,25 +1,29 @@
 package com.exuberant.tutorials.javaconcept.stacks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class Stack {
-    private static ArrayList<Integer> a = new ArrayList<>();
+public class Stack<T> {
 
-    private Stack() {
+    private static Logger logger = LoggerFactory.getLogger(Stack.class);
+
+    private List<T> container = new ArrayList<>();
+
+    public synchronized void push(T t) {
+        container.add(t);
     }
 
-    public static synchronized void push(Integer i) {
-        a.add(i);
+    public synchronized T pop() {
+        return container.remove(container.size() - 1);
     }
 
-    public static synchronized int pop() {
-        return a.remove(a.size() - 1);
-    }
-
-    public static void printStack() {
-        int size = a.size();
-        for (int i = size - 1; i >= 0; --i) {
-            System.out.println(" " + a.get(i));
+    public void printStack() {
+        int size = container.size();
+        for (int index = size - 1; index >= 0; --index) {
+            logger.info("{}", container.get(index));
         }
     }
 }

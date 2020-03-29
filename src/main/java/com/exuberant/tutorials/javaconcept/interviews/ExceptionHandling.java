@@ -1,8 +1,14 @@
 package com.exuberant.tutorials.javaconcept.interviews;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ExceptionHandling {
+
+    private static Logger logger = LoggerFactory.getLogger(ExceptionHandling.class);
+
     public static void main(String[] args) {
-        System.out.println(name());
+        logger.info(String.valueOf(name()));
     }
 
     @SuppressWarnings("finally")

@@ -1,9 +1,15 @@
 package com.exuberant.tutorials.javaconcept.multithreading.shared.resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class VisibilityAndLocksDemo {
+
+    private static Logger logger = LoggerFactory.getLogger(VisibilityAndLocksDemo.class);
+
     private int count = 0;
     private Lock lock = new ReentrantLock();
 
@@ -12,15 +18,15 @@ public class VisibilityAndLocksDemo {
         long start = System.nanoTime();
         c1.synchronizedIncrement();
         long end = System.nanoTime();
-        System.err.println("Time Taken Syncronized: " + (end - start));
+        logger.info("Time Taken Syncronized: " + (end - start));
         VisibilityAndLocksDemo c2 = new VisibilityAndLocksDemo();
         c2.doIncrement();
         long end2 = System.nanoTime();
-        System.err.println("Time Taken: " + (end2 - end));
+        logger.info("Time Taken: " + (end2 - end));
         VisibilityAndLocksDemo c3 = new VisibilityAndLocksDemo();
         c3.doLockedIncrement();
         long end3 = System.nanoTime();
-        System.err.println("Locked Time Taken: " + (end3 - end2));
+        logger.info("Locked Time Taken: " + (end3 - end2));
     }
 
     private void falseIncrement() {
@@ -42,7 +48,7 @@ public class VisibilityAndLocksDemo {
         t2.start();
         t1.join();
         t2.join();
-        System.err.println("doIncrement: The ideal count shud be 20000 but the count is " + count);
+        logger.info("doIncrement: The ideal count shud be 20000 but the count is " + count);
     }
 
     private void synchronizedIncrement() throws InterruptedException {
@@ -52,7 +58,7 @@ public class VisibilityAndLocksDemo {
         t2.start();
         t1.join();
         t2.join();
-        System.err.println("doLockedIncrement: The ideal count shud be 20000 but the count is " + count);
+        logger.info("doLockedIncrement: The ideal count shud be 20000 but the count is " + count);
     }
 
     private void doLockedIncrement() throws InterruptedException {
@@ -62,7 +68,7 @@ public class VisibilityAndLocksDemo {
         t2.start();
         t1.join();
         t2.join();
-        System.err.println("doLockedIncrement: The ideal count shud be 20000 but the count is " + count);
+        logger.info("doLockedIncrement: The ideal count shud be 20000 but the count is " + count);
     }
 
     private void reentrantLockIncrement() {

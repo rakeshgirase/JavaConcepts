@@ -1,10 +1,16 @@
 package com.exuberant.tutorials.javaconcept.concurrent.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
 public class ExecutorServiceTest {
+
+    private static Logger logger = LoggerFactory.getLogger(ExecutorServiceTest.class);
+
     private static final int NTHREDS = 100;
     private static final int iterations = 100000;
 
@@ -21,8 +27,8 @@ public class ExecutorServiceTest {
         FutureTask<Integer> f = new FutureTask<>(new MyCallable(10));
         ExecutorService service = Executors.newFixedThreadPool(1);
         service.submit(f);
-        System.out.println(f.get());
-        System.err.println("Done with Future...");
+        logger.info(String.valueOf(f.get()));
+        logger.info("Done with Future...");
     }
 
     public static void futureTest() throws InterruptedException, ExecutionException {
@@ -35,7 +41,7 @@ public class ExecutorServiceTest {
         List<Future<Integer>> out = callableExecutor.invokeAll(call);
         callableExecutor.shutdown();
         for (Future<Integer> f : out) {
-            System.err.println("Hey" + f.get());
+            logger.info("Hey" + f.get());
         }
     }
 
@@ -45,7 +51,7 @@ public class ExecutorServiceTest {
             Callable<Integer> worker = new MyCallable(1000 + i);
             Future<Integer> f = callableExecutor.submit(worker);
             try {
-                System.out.println(f.get());
+                logger.info(String.valueOf(f.get()));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
@@ -57,9 +63,9 @@ public class ExecutorServiceTest {
         callableExecutor.shutdown();
         // Wait until all threads are finish
         if (!callableExecutor.isTerminated()) {
-            System.out.println("waiting");
+            logger.info("waiting");
         }
-        System.out.println("Finished all Callable threads");
+        logger.info("Finished all Callable threads");
 
     }
 
@@ -76,7 +82,7 @@ public class ExecutorServiceTest {
         while (!runnableExecutor.isTerminated()) {
 
         }
-        System.out.println("Finished all Runnable threads");
+        logger.info("Finished all Runnable threads");
     }
 
 }

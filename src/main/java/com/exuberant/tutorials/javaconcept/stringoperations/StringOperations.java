@@ -1,26 +1,29 @@
-package com.exuberant.tutorials.javaconcept.stringOperations;
+package com.exuberant.tutorials.javaconcept.stringoperations;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StringOperations {
+
+    private static Logger logger = LoggerFactory.getLogger(StringOperations.class);
+
     public static void main(String[] args) {
         String duplicate = new String("Rakesh");
-        String name = "Rakesha";
+        String name = "Rakesh";
         if (name == duplicate) {
-            System.out.println("Equals");
+            logger.info("Equals");
         } else {
-            System.out.println("Difference");
+            logger.info("Difference");
         }
         StringBuffer buff = new StringBuffer("Rakesh");
-        System.out.println(buff);
-        System.err.println(reverse(name));
-
-
+        logger.info(String.valueOf(buff));
+        logger.info(reverse(name));
     }
 
     public static String reverse(String reverse) {
         int size = reverse.length();
-        char[] word = new char[10];
         int mid = size / 2;
-        word = reverse.toCharArray();
+        char[] word = reverse.toCharArray();
         for (int i = (mid - 1), j = (mid + 1); i >= 0 && j < size; i--, j++) {
             char temp = word[i];
             word[i] = word[j];

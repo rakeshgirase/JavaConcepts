@@ -1,20 +1,25 @@
 package com.exuberant.tutorials.javaconcept.reflections;
 
 import com.exuberant.tutorials.javaconcept.customObjects.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class ReflectionDemo {
+
+    private static Logger logger = LoggerFactory.getLogger(ReflectionDemo.class);
+
     public static void main(String[] args) throws Exception {
         /*createObjects();
 		setPrivateFields();
 		invokeMethods();*/
         Class clazz = Class.forName("com.exuberant.tutorials.javaconcept.customObjects.Employee");
-        System.out.println(clazz);
+        logger.info(String.valueOf(clazz));
         Employee emp = new Employee(1, "Rakesh", "Mumbai");
         Method method = clazz.getMethod("getName");
-        System.out.println(method.invoke(emp));
+        logger.info(String.valueOf(method.invoke(emp)));
     }
 
     private static void invokeMethods() throws Exception {
@@ -31,18 +36,21 @@ public class ReflectionDemo {
         //Field f = e.getField("name");
         f.setAccessible(true);
         f.set(emp, "Dynamic");
-        System.out.println(emp);
+        logger.info(String.valueOf(emp));
     }
 
     private static void createObjects() throws Exception {
         Class<Emp> e = Emp.class;
         Emp emp = e.newInstance();
-        System.out.println(emp);
+        logger.info(String.valueOf(emp));
         emp = e.getConstructor(String.class).newInstance("Rakesh");
     }
 }
 
 class Emp {
+
+    private static Logger logger = LoggerFactory.getLogger(Emp.class);
+
     private String name;
 
     public Emp(String name) {
@@ -58,7 +66,7 @@ class Emp {
     }
 
     public void printPublic(String test) {
-        System.out.println("Public: My Name is " + name);
-        System.out.println("Arguments " + test);
+        logger.info("Public: My Name is " + name);
+        logger.info("Arguments " + test);
     }
 }

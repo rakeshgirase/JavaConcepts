@@ -1,11 +1,15 @@
 package com.exuberant.tutorials.javaconcept.multithreading.object.locks;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.Callable;
 
 public class Worker {
+
+    private static Logger logger = LoggerFactory.getLogger(Worker.class);
 
     private Random random = new Random();
 
@@ -54,8 +58,6 @@ public class Worker {
     }
 
     public void main() {
-        System.out.println();
-
         long start = System.currentTimeMillis();
 
         Thread t1 = new Thread(() -> process());
@@ -69,14 +71,13 @@ public class Worker {
             t1.join();
             t2.join();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         long end = System.currentTimeMillis();
 
-        System.out.println("Time taken: " + (end - start));
-        System.out.println("Locked List1: " + lockedList1.size() + "; Locked List2: " + lockedList2.size());
-        System.out.println("List1: " + list1.size() + "; List2: " + list2.size());
+        logger.info("Time taken: " + (end - start));
+        logger.info("Locked List1: " + lockedList1.size() + "; Locked List2: " + lockedList2.size());
+        logger.info("List1: " + list1.size() + "; List2: " + list2.size());
     }
 }

@@ -1,16 +1,22 @@
 package com.exuberant.tutorials.javaconcept.sort;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class JoinSortedArray {
+
+    private static Logger logger = LoggerFactory.getLogger(JoinSortedArray.class);
+
     public static void main(String[] args) {
         // List<Integer> first = Arrays.asList(12,15,16,45,58,88,89);
         // List<Integer> first = Arrays.asList(1,2,3,4,5,9);
         List<Integer> first = Arrays.asList(89, 99, 100, 255, 253);
         List<Integer> second = Arrays.asList(9, 13, 14, 19, 45, 88);
-        System.out.println(joinSortedArray(first, second));
+        logger.info(joinSortedArray(first, second).toString());
     }
 
     public static List<Integer> joinSortedArray(List<Integer> first,

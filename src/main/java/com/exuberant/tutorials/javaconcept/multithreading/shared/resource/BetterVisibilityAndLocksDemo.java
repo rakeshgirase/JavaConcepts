@@ -1,5 +1,8 @@
 package com.exuberant.tutorials.javaconcept.multithreading.shared.resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -85,6 +88,12 @@ class SyncronizedIncrementor extends NormalIncrementor {
 }
 
 class Worker {
+
+    private static Logger logger = LoggerFactory.getLogger(Worker.class);
+
+    private Worker() {
+    }
+
     public static void doIncrement(Incrementor incrementor, int number) throws InterruptedException {
         long start = System.nanoTime();
         Thread t1 = new Thread(() -> incrementor.increment(number));
@@ -94,7 +103,6 @@ class Worker {
         t1.join();
         t2.join();
         long end = System.nanoTime();
-        System.err.println(incrementor.getClass().getSimpleName() + ": Ideal count: " + 2 * number + " Actual Count: "
-                + incrementor.getCount() + " Time Taken:" + (end - start));
+        logger.info("{}: Ideal count: {} Actual Count: {} Time Taken: {}", incrementor.getClass().getSimpleName(), 2 * number, incrementor.getCount(), (end - start));
     }
 }

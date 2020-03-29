@@ -1,24 +1,29 @@
 package com.exuberant.tutorials.javaconcept.fundamentals;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Common {
 
+    private static Logger logger = LoggerFactory.getLogger(Common.class);
+
     public synchronized void synchronizedMethod() {
-        System.out.println("synchronizedMethod called");
+        logger.info("synchronizedMethod called");
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("synchronizedMethod done");
+        logger.info("synchronizedMethod done");
     }
 
     public void method() {
-        System.out.println("Method called");
+        logger.info("Method called");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Method done");
+        logger.info("Method done");
     }
 }

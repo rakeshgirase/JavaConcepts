@@ -1,12 +1,17 @@
-package com.exuberant.tutorials.javaconcept.concurrent.blockingQueue.priorityQ;
+package com.exuberant.tutorials.javaconcept.concurrent.blockingqueue.priority;
 
 import com.exuberant.tutorials.javaconcept.customObjects.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 
 
 public class PriorityBlockingQueueTester {
+
+    private static Logger logger = LoggerFactory.getLogger(PriorityBlockingQueueTester.class);
+
     public static void main(String[] args) {
         BlockingQueue<Employee> pq = new PriorityBlockingQueue<>();
         pq.add(new Employee(1, "Rakesh", "UNR"));
@@ -15,7 +20,7 @@ public class PriorityBlockingQueueTester {
 
         for (int i = 0; i < 10; i++) {
             try {
-                System.out.println(pq.take());
+                logger.info(String.valueOf(pq.take()));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

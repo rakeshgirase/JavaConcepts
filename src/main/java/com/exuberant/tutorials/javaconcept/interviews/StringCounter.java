@@ -1,6 +1,12 @@
 package com.exuberant.tutorials.javaconcept.interviews;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class StringCounter implements Comparable<StringCounter> {
+
+    private static Logger logger = LoggerFactory.getLogger(StringCounter.class);
+
     String name;
     Integer count = 1;
 
@@ -26,7 +32,7 @@ public class StringCounter implements Comparable<StringCounter> {
 
     @Override
     public int compareTo(StringCounter sc) {
-        System.out.println("CompareTo Called");
+        logger.info("CompareTo Called");
         if (this.name.equals(sc.name)) {
             return 0;
         }
@@ -48,7 +54,7 @@ public class StringCounter implements Comparable<StringCounter> {
 
     @Override
     public boolean equals(Object obj) {
-        System.out.println("Equals Called");
+        logger.info("Equals Called");
         if (this == obj)
             return true;
         if (obj == null)

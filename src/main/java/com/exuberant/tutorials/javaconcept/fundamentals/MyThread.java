@@ -1,8 +1,14 @@
 package com.exuberant.tutorials.javaconcept.fundamentals;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class MyThread extends Thread {
-    private int id = 0;
+
+    private static Logger logger = LoggerFactory.getLogger(MyThread.class);
+
+    private int id;
     private Common common;
 
     public MyThread(String name, int no, Common object) {
@@ -17,14 +23,11 @@ public class MyThread extends Thread {
         MyThread t2 = new MyThread("MyThread-2", 1, c);
         t1.start();
         t2.start();
-        /*ThreadMXBean t = ManagementFactory.getThreadMXBean();
-		for(long n: t.findDeadlockedThreads()){
-			System.out.println(n);
-		}*/
     }
 
+    @Override
     public void run() {
-        System.out.println("Running Thread" + this.getName());
+        logger.info("Running Thread: [{}]", this.getName());
         try {
             if (id == 0) {
                 common.synchronizedMethod();

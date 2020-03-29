@@ -1,8 +1,14 @@
 package com.exuberant.tutorials.javaconcept.concurrent.semaphores;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.Semaphore;
 
 public class SemaphoreDemo {
+
+    private static Logger logger = LoggerFactory.getLogger(SemaphoreDemo.class);
+
     public static void main(String[] args) {
         Semaphore s1 = new Semaphore(1);
         Semaphore s2 = new Semaphore(1);
@@ -18,7 +24,7 @@ public class SemaphoreDemo {
             e.printStackTrace();
         }
 
-        System.out.println("Done");
+        logger.info("Done");
 
     }
 
@@ -37,14 +43,14 @@ public class SemaphoreDemo {
         public void run() {
             try {
                 first.acquire();
-                System.out.println(sysname + " acquired " + first);
+                logger.info(sysname + " acquired " + first);
                 Thread.sleep(200); // demonstrate deadlock
                 second.acquire();
-                System.out.println(sysname + " acquired " + second);
+                logger.info(sysname + " acquired " + second);
                 second.release();
-                System.out.println(sysname + " released " + second);
+                logger.info(sysname + " released " + second);
                 first.release();
-                System.out.println(sysname + " released " + first);
+                logger.info(sysname + " released " + first);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

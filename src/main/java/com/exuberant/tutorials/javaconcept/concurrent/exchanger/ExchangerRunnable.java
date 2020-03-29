@@ -1,8 +1,13 @@
 package com.exuberant.tutorials.javaconcept.concurrent.exchanger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.Exchanger;
 
 public class ExchangerRunnable implements Runnable {
+
+    private static Logger logger = LoggerFactory.getLogger(ExchangerRunnable.class);
 
     Exchanger<Object> exchanger = null;
     Object object = null;
@@ -18,7 +23,7 @@ public class ExchangerRunnable implements Runnable {
 
             this.object = this.exchanger.exchange(this.object);
 
-            System.out.println(Thread.currentThread().getName() + " exchanged "
+            logger.info(Thread.currentThread().getName() + " exchanged "
                     + previous + " for " + this.object);
         } catch (InterruptedException e) {
             e.printStackTrace();
