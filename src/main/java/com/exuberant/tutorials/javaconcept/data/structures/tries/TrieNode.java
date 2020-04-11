@@ -8,7 +8,6 @@ public class TrieNode {
     private boolean endOfWord;
 
     private Map<Character, TrieNode> children = new HashMap<>();
-
     public Map<Character, TrieNode> getChildren() {
         return children;
     }

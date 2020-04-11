@@ -45,6 +45,7 @@ public class Employee implements Comparable<Employee>, Serializable {
 
     @Override
     public int compareTo(Employee emp) {
+        System.err.println("Inside CmpareTo..." + emp.toString());
         int result = 0;
         if (this.empId > emp.empId) {
             result = -1;
@@ -58,5 +59,16 @@ public class Employee implements Comparable<Employee>, Serializable {
     public String toString() {
         return "Employee [empId=" + empId + ", name=" + name + ", address="
                 + address + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        return empId;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Employee that = (Employee) obj;
+        return this.empId == that.empId && this.name.equals(that.name);
     }
 }
