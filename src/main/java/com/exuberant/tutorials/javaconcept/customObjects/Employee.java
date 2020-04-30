@@ -71,4 +71,9 @@ public class Employee implements Comparable<Employee>, Serializable {
         Employee that = (Employee) obj;
         return this.empId == that.empId && this.name.equals(that.name);
     }
+
+    public boolean isEven(Integer integer) {
+        System.err.println("IsEven is called with " + integer);
+        return integer % 2 == 0;
+    }
 }
