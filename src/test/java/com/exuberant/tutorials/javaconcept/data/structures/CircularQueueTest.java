@@ -57,6 +57,18 @@ public class CircularQueueTest {
     }
 
     @Test
+    public void enqueueReturnsFalseWhenQueueIsFull() {
+        circularQueue = new CircularQueue(3);
+        assertTrue(circularQueue.isEmpty());
+        circularQueue.enqueue(1);
+        circularQueue.enqueue(2);
+        circularQueue.enqueue(3);
+        assertEquals(3,circularQueue.last());
+        assertTrue(circularQueue.isFull());
+        assertFalse(circularQueue.enqueue(5));
+    }
+
+    @Test
     public void dequeue() {
         circularQueue = new CircularQueue(3);
         assertTrue(circularQueue.isEmpty());
@@ -67,5 +79,12 @@ public class CircularQueueTest {
         assertEquals(2,circularQueue.dequeue());
         assertEquals(1,circularQueue.dequeue());
         assertTrue(circularQueue.isEmpty());
+    }
+
+    @Test
+    public void dequeueReturnsNegativeWhenEmpty() {
+        circularQueue = new CircularQueue(3);
+        assertTrue(circularQueue.isEmpty());
+        assertEquals(-1, circularQueue.dequeue());
     }
 }

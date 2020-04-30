@@ -32,22 +32,20 @@ public class CircularQueue {
     }
 
     public boolean enqueue(int item) {
-        if (isFull()) {
-            return false;
-        } else {
+        if (!isFull()) {
             this.position = position + 1;
             data[position] = item;
             return true;
         }
+        return false;
     }
 
     public int dequeue() {
-        if (isEmpty()) {
-            return -1;
-        } else {
+        if (!isEmpty()) {
             int item = data[position];
-            position = position-1;
+            position = position - 1;
             return item;
         }
+        return -1;
     }
 }
