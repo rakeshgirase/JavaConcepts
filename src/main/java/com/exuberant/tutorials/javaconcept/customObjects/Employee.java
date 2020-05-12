@@ -45,7 +45,7 @@ public class Employee implements Comparable<Employee>, Serializable {
 
     @Override
     public int compareTo(Employee emp) {
-        System.err.println("Inside CmpareTo..." + emp.toString());
+        System.err.println("Inside CompareTo..." + emp.toString());
         int result = 0;
         if (this.empId > emp.empId) {
             result = -1;
