@@ -1,8 +1,6 @@
 package com.exuberant.tutorials.javaconcept.data.structures.tries;
 
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-
 import static org.junit.Assert.*;
 
 public class TrieTest {
@@ -63,7 +61,7 @@ public class TrieTest {
 
         trie1.delete("pies");
 
-        Assertions.assertTrue(trie1.containsNode("pie"));
+        assertTrue(trie1.containsNode("pie"));
     }
 
     private Trie createExampleTrie() {

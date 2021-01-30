@@ -1,0 +1,22 @@
+{
+  "wcis": [
+    {
+      "wcisId": 1234,
+      "name": "Rakesh Girase"
+    },
+    {
+      "wcisId": 4567,
+      "name": "Avatar Girase"
+    }
+  ],
+  "Company": [
+    {
+      "companyId": 1,
+      "companyName": "Google"
+    },
+    {
+      "companyId": 2,
+      "companyName": "ABACUS"
+    }
+  ]
+}
