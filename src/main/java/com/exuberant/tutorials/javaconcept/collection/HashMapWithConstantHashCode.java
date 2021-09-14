@@ -33,12 +33,12 @@ class Human {
     }
 
     @Override
-    public boolean equals(Object o) {
-        logger.info("Equals called for: {}", this);
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object that) {
+        logger.info("Equals called for: {} with {}", this, that);
+        if (this == that) return true;
+        if (that == null || getClass() != that.getClass()) return false;
 
-        Human human = (Human) o;
+        Human human = (Human) that;
 
         if (firstName != null ? !firstName.equals(human.firstName) : human.firstName != null) return false;
         return lastName != null ? lastName.equals(human.lastName) : human.lastName == null;
