@@ -2,7 +2,6 @@ package com.exuberant.tutorials.javaconcept.interviews;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.awt.HKSCS;
 
 import java.util.HashSet;
 import java.util.List;
